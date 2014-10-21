@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableNeo4jRepositories("com.sri.poc.repo")
 
-class ApplicationConfig extends Neo4jConfiguration {
+public class ApplicationConfig extends Neo4jConfiguration {
 
 	public ApplicationConfig(){
 		super.setBasePackage("com.sri.poc");

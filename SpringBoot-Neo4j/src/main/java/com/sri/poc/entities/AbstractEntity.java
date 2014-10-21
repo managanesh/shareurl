@@ -22,10 +22,13 @@ public abstract class AbstractEntity {
 	@GraphId
 	private Long id;
 
+	transient private Integer hash;
+	
 	public Long getId() {
 		return id;
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 
@@ -40,8 +43,14 @@ public abstract class AbstractEntity {
 
     }
 
-	@Override
+	public int hash2Code() {
+		return id == null ? System.identityHashCode(this) : id.hashCode();
+	}
+
 	public int hashCode() {
-		return id == null ? 0 : id.hashCode();
+		if (hash == null)
+			hash = id == null ? System.identityHashCode(this) : id.hashCode();
+
+		return hash.hashCode();
 	}
 }
